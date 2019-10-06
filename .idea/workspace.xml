@@ -11,78 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="TodoList.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/todo_list/src/model/TodoList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-              <folding>
-                <element signature="e#326#327#0" expanded="true" />
-                <element signature="e#360#361#0" expanded="true" />
-                <element signature="e#388#389#0" expanded="true" />
-                <element signature="e#432#433#0" expanded="true" />
-                <element signature="e#464#465#0" expanded="true" />
-                <element signature="e#522#523#0" expanded="true" />
-                <element signature="e#564#565#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TodoTask.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/todo_list/src/model/TodoTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-              <folding>
-                <element signature="e#452#453#0" expanded="true" />
-                <element signature="e#486#487#0" expanded="true" />
-                <element signature="e#514#515#0" expanded="true" />
-                <element signature="e#549#550#0" expanded="true" />
-                <element signature="e#580#581#0" expanded="true" />
-                <element signature="e#628#629#0" expanded="true" />
-                <element signature="e#668#669#0" expanded="true" />
-                <element signature="e#699#700#0" expanded="true" />
-                <element signature="e#728#729#0" expanded="true" />
-                <element signature="e#769#770#0" expanded="true" />
-                <element signature="e#798#799#0" expanded="true" />
-                <element signature="e#839#840#0" expanded="true" />
-                <element signature="e#872#873#0" expanded="true" />
-                <element signature="e#928#929#0" expanded="true" />
-                <element signature="e#972#973#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TaskOwener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/todo_list/src/model/TaskOwener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-              <folding>
-                <element signature="e#204#205#0" expanded="true" />
-                <element signature="e#238#239#0" expanded="true" />
-                <element signature="e#266#267#0" expanded="true" />
-                <element signature="e#302#303#0" expanded="true" />
-                <element signature="e#334#335#0" expanded="true" />
-                <element signature="e#384#385#0" expanded="true" />
-                <element signature="e#426#427#0" expanded="true" />
-                <element signature="e#461#462#0" expanded="true" />
-                <element signature="e#492#493#0" expanded="true" />
-                <element signature="e#540#541#0" expanded="true" />
-                <element signature="e#580#581#0" expanded="true" />
-                <element signature="e#613#614#0" expanded="true" />
-                <element signature="e#644#645#0" expanded="true" />
-                <element signature="e#689#690#0" expanded="true" />
-                <element signature="e#722#723#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -102,9 +31,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/todo_list/src/model/TaskOwener.java" />
         <option value="$PROJECT_DIR$/todo_list/src/model/TodoTask.java" />
         <option value="$PROJECT_DIR$/todo_list/src/model/TodoList.java" />
+        <option value="$PROJECT_DIR$/todo_list/src/model/TaskOwener.java" />
       </list>
     </option>
   </component>
@@ -146,7 +75,7 @@
               <item name="tau" type="b2602c69:ProjectViewProjectNode" />
               <item name="todo_list" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -231,12 +160,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570351145341</updated>
-      <workItem from="1570351150661" duration="361000" />
+      <workItem from="1570351150661" duration="1345000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="361000" />
+    <option name="totallyTimeSpent" value="1345000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -303,11 +232,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/todo_list/src/model/TodoList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding>
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#388#389#0" expanded="true" />
+            <element signature="e#432#433#0" expanded="true" />
+            <element signature="e#464#465#0" expanded="true" />
+            <element signature="e#522#523#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/todo_list/src/model/TaskOwener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        <state relative-caret-position="187">
+          <caret line="11" column="85" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
           <folding>
+            <element signature="e#179#180#0" expanded="true" />
             <element signature="e#204#205#0" expanded="true" />
             <element signature="e#238#239#0" expanded="true" />
             <element signature="e#266#267#0" expanded="true" />
@@ -323,22 +269,6 @@
             <element signature="e#644#645#0" expanded="true" />
             <element signature="e#689#690#0" expanded="true" />
             <element signature="e#722#723#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/todo_list/src/model/TodoList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-          <folding>
-            <element signature="e#326#327#0" expanded="true" />
-            <element signature="e#360#361#0" expanded="true" />
-            <element signature="e#388#389#0" expanded="true" />
-            <element signature="e#432#433#0" expanded="true" />
-            <element signature="e#464#465#0" expanded="true" />
-            <element signature="e#522#523#0" expanded="true" />
-            <element signature="e#564#565#0" expanded="true" />
           </folding>
         </state>
       </provider>
