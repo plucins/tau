@@ -9,11 +9,11 @@ public class TodoTask {
     public TodoTask() {
     }
 
-    public TodoTask(Long id, String taskName, boolean isDone, TaskOwener taskOwener) {
+    public TodoTask(long id, String taskName) {
         this.id = id;
         this.taskName = taskName;
-        this.isDone = isDone;
-        this.taskOwener = taskOwener;
+        this.isDone = false;
+        this.taskOwener = new TaskOwener();
     }
 
     public Long getId() {
