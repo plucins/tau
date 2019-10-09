@@ -45,4 +45,21 @@ public class TodoListService {
     public List<TodoTask> getAllTodoTasks() {
         return new ArrayList<>(TodoListRepo.getInstance().collectionAccess());
     }
+
+    public TodoTask updateTodoTask(long id, TodoTask task){
+        if (TodoListRepo.getInstance().isPressentInRepoById(id)) {
+            TodoTask taskToUpdate = getTaskById(id);
+
+            taskToUpdate.setTaskName(task.getTaskName());
+            taskToUpdate.setDone(task.isDone());
+            taskToUpdate.setTaskOwener(task.getTaskOwener());
+
+            TodoListRepo.getInstance().collectionAccess().remove(getTaskById(id));
+            TodoListRepo.getInstance().collectionAccess().add(taskToUpdate);
+
+            return taskToUpdate;
+        }
+
+        throw new NoSuchElementException("Element with pointed id doesnt exist");
+    }
 }

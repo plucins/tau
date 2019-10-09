@@ -1,11 +1,13 @@
 package service;
 
+import model.TaskOwener;
 import model.TodoTask;
 import org.junit.*;
 import repository.TodoListRepo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 
 public class TodoListServiceTest {
@@ -32,29 +34,63 @@ public class TodoListServiceTest {
 
 
     @Test
-    public void addTaskToList() {
+    public void addTaskToList_correct_case() {
         int taskCountBeforeAdd = repository.collectionAccess().size();
         todoListService.addTaskToList(new TodoTask(6, "kolejny"));
         Assert.assertEquals(taskCountBeforeAdd + 1, repository.collectionAccess().size());
     }
 
     @Test
-    public void getTaskById() {
+    public void getTaskById_correct_case() {
         TodoTask task = todoListService.getTaskById(1);
         Assert.assertEquals(task.getTaskName(), "pierwsza karta");
     }
 
+    @Test(expected = NoSuchElementException.class)
+    public void getTaskById_NoSuchElementException_expected() {
+        TodoTask task = todoListService.getTaskById(19);
+    }
+
     @Test
-    public void deleteTaskById() {
+    public void deleteTaskById_correct_case() {
         int elementNumbersBeforeTest = repository.collectionAccess().size();
-        todoListService.deleteTaskById(1);
+        Assert.assertTrue(todoListService.deleteTaskById(1));
         Assert.assertEquals(elementNumbersBeforeTest, repository.collectionAccess().size() + 1);
     }
 
     @Test
-    public void getAllTodoTasks() {
+    public void deleteTaskById_no_element_to_delete() {
+
+        Assert.assertFalse(todoListService.deleteTaskById(99));
+    }
+
+    @Test
+    public void getAllTodoTasks_correct_case() {
         List<TodoTask> tasks = todoListService.getAllTodoTasks();
         Assert.assertEquals(tasks.size(), 5);
+    }
+
+    @Test
+    public void updateTodoTask_correct_case() {
+
+        TodoTask task = new TodoTask(99, "Title");
+        task.setDone(true);
+        TodoTask taskToUpdate = todoListService.getTaskById(1);
+        task.setTaskOwener(new TaskOwener((long) 1,"Adam","Adamowicz",true));
+        todoListService.updateTodoTask(1, task);
+
+        Assert.assertEquals(taskToUpdate.getTaskName(), task.getTaskName());
+        Assert.assertEquals(taskToUpdate.isDone(), task.isDone());
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void updateTodoTask_NoSuchElementException_expected() {
+
+        TodoTask task = new TodoTask(99, "Title");
+        task.setDone(true);
+        task.setTaskOwener(new TaskOwener((long) 1,"Adam","Adamowicz",true));
+        todoListService.updateTodoTask(98, task);
+
     }
 
     @After
