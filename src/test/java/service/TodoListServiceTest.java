@@ -1,24 +1,32 @@
 package service;
 
-import model.TaskOwener;
+import model.TaskOwner;
 import model.TodoTask;
+import model.TodoTaskTimeDTO;
 import org.junit.*;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 import repository.TodoListRepo;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-
+@RunWith(MockitoJUnitRunner.class)
 public class TodoListServiceTest {
 
 
     private TodoListRepo repository = TodoListRepo.getInstance();
     private TodoListService todoListService = new TodoListService();
 
+    @Mock
+    private TodoTaskTimeDTO todoTaskTimeDTOMock;
+
     @BeforeClass
     public static void setup() {
-
     }
 
     @Before
@@ -76,7 +84,7 @@ public class TodoListServiceTest {
         TodoTask task = new TodoTask(99, "Title");
         task.setDone(true);
         TodoTask taskToUpdate = todoListService.getTaskById(1);
-        task.setTaskOwener(new TaskOwener((long) 1,"Adam","Adamowicz",true));
+        task.setTaskOwner(new TaskOwner((long) 1,"Adam","Adamowicz",true));
         todoListService.updateTodoTask(1, task);
 
         Assert.assertEquals(taskToUpdate.getTaskName(), task.getTaskName());
@@ -88,13 +96,54 @@ public class TodoListServiceTest {
 
         TodoTask task = new TodoTask(99, "Title");
         task.setDone(true);
-        task.setTaskOwener(new TaskOwener((long) 1,"Adam","Adamowicz",true));
+        task.setTaskOwner(new TaskOwner((long) 1,"Adam","Adamowicz",true));
         todoListService.updateTodoTask(98, task);
 
     }
 
+    @Test
+    public void readDataOnGetObject_correct_case() {
+        Assert.assertEquals(todoListService.getTaskById(1).getLastReadTime(), LocalDateTime.now());
+    }
+
+    @Test
+    public void addedDateDuringAddToCollection_correct_case() {
+        todoListService.addTaskToList(TodoListFactory.create(55, "make a call"));
+
+        Assert.assertEquals(todoListService.getTaskById(55).getLastReadTime(), LocalDateTime.now());
+    }
+
+    @Test
+    public void updatedDateDuringUpdateObject_correct_case() {
+        TodoTask task = todoListService.updateTodoTask(1, todoListService.getTaskById(2));
+        Assert.assertEquals(task.getUpdatedTime(), LocalDateTime.now());
+    }
+
+    @Test
+    public void getTimesByTaskId() {
+        todoListService.getTimesById(1);
+        Mockito.when(todoTaskTimeDTOMock.create(Mockito.any())).thenCallRealMethod();
+        Mockito.verify(todoTaskTimeDTOMock, Mockito.times(1)).create(Mockito.any());
+    }
+
+    @Test
+    public void setTimesSaveToFalse_correct_case() {
+        TodoTask taskWithFalse = repository.collectionAccess().get(1);
+        taskWithFalse.setSaveTimes(false);
+        todoListService.updateTodoTask(taskWithFalse.getId(), taskWithFalse);
+        Mockito.timeout(300);
+
+        List<TodoTask> allTodoTasks = todoListService.getAllTodoTasks();
+        Assert.assertTrue(allTodoTasks.stream().anyMatch(u -> u.getLastReadTime() != taskWithFalse.getLastReadTime()));
+        Assert.assertEquals(1, allTodoTasks.stream().filter(u -> u.getLastReadTime() == taskWithFalse.getLastReadTime()).count());
+    }
+
+
+    //http://szuflandia.pjwstk.edu.pl/~pantadeusz/zajecia/tau/2019_2020_zaoczne/#art/lab2.md
+
     @After
     public void clear() {
         repository.setTodoLists(new ArrayList<>());
+
     }
 }

@@ -1,10 +1,16 @@
 package model;
 
+import java.time.LocalDateTime;
+
 public class TodoTask {
     private Long id;
     private String taskName;
     private boolean isDone;
-    private TaskOwener taskOwener;
+    private LocalDateTime creationTime;
+    private LocalDateTime updatedTime;
+    private LocalDateTime lastReadTime;
+    private TaskOwner taskOwner;
+    private boolean saveTimes;
 
     public TodoTask() {
     }
@@ -13,7 +19,10 @@ public class TodoTask {
         this.id = id;
         this.taskName = taskName;
         this.isDone = false;
-        this.taskOwener = new TaskOwener();
+        this.taskOwner = new TaskOwner();
+        this.creationTime = LocalDateTime.now();
+        this.updatedTime = LocalDateTime.now();
+        this.saveTimes = true;
     }
 
     public Long getId() {
@@ -40,11 +49,43 @@ public class TodoTask {
         isDone = done;
     }
 
-    public TaskOwener getTaskOwener() {
-        return taskOwener;
+    public TaskOwner getTaskOwner() {
+        return taskOwner;
     }
 
-    public void setTaskOwener(TaskOwener taskOwener) {
-        this.taskOwener = taskOwener;
+    public void setTaskOwner(TaskOwner taskOwner) {
+        this.taskOwner = taskOwner;
+    }
+
+    public LocalDateTime getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(LocalDateTime creationTime) {
+        this.creationTime = creationTime;
+    }
+
+    public LocalDateTime getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(LocalDateTime updatedTime) {
+        this.updatedTime = updatedTime;
+    }
+
+    public LocalDateTime getLastReadTime() {
+        return lastReadTime;
+    }
+
+    public void setLastReadTime(LocalDateTime lastReadTime) {
+        this.lastReadTime = lastReadTime;
+    }
+
+    public boolean isSaveTimes() {
+        return saveTimes;
+    }
+
+    public void setSaveTimes(boolean saveTimes) {
+        this.saveTimes = saveTimes;
     }
 }

@@ -1,15 +1,15 @@
 package model;
 
-public class TaskOwener {
+public class TaskOwner {
     private Long id;
     private String firstName;
     private String lastName;
     private boolean isActive;
 
-    public TaskOwener() {
+    public TaskOwner() {
     }
 
-    public TaskOwener(Long id, String firstName, String lastName, boolean isActive) {
+    public TaskOwner(Long id, String firstName, String lastName, boolean isActive) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

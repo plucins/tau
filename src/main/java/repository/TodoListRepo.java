@@ -1,8 +1,8 @@
 package repository;
 
-import model.TodoList;
 import model.TodoTask;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +21,10 @@ public class TodoListRepo {
 
 
     public List<TodoTask> collectionAccess() {
+        todoLists
+                .stream()
+                .filter(TodoTask::isSaveTimes)
+                .forEach(u -> u.setLastReadTime(LocalDateTime.now()));
         return todoLists;
     }
 
@@ -31,10 +35,13 @@ public class TodoListRepo {
 
 
     public Optional<TodoTask> getObjectById(Long id) {
-        return todoLists.stream().filter(u -> u.getId().equals(id)).findFirst();
+        return todoLists.stream()
+                .filter(u -> u.getId().equals(id))
+                .findFirst();
+
     }
 
-    public boolean isPressentInRepoById(final Long id) {
+    public boolean isPresentInRepoById(final Long id) {
         return todoLists.stream().anyMatch(u -> u.getId().equals(id));
     }
 }
