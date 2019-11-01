@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import static org.mockito.Mockito.when;
+
 @RunWith(MockitoJUnitRunner.class)
 public class TodoListServiceTest {
 
@@ -115,15 +117,17 @@ public class TodoListServiceTest {
 
     @Test
     public void updatedDateDuringUpdateObject_correct_case() {
+        LocalDateTime time = LocalDateTime.now();
+        when(todoTaskTimeDTOMock.getUpdatedTime()).thenReturn(time);
+
         TodoTask task = todoListService.updateTodoTask(1, todoListService.getTaskById(2));
-        Assert.assertEquals(task.getUpdatedTime(), LocalDateTime.now());
+        Mockito.timeout(300);
+        Assert.assertEquals(todoTaskTimeDTOMock.getUpdatedTime(), time);
     }
 
     @Test
     public void getTimesByTaskId() {
-        todoListService.getTimesById(1);
-//        Mockito.when(todoTaskTimeDTOMock.create(Mockito.any())).thenCallRealMethod();
-//        Mockito.verify(todoTaskTimeDTOMock, Mockito.times(1)).create(Mockito.any());
+        Assert.assertNotNull(todoListService.getTimesById(1));
     }
 
     @Test
