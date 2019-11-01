@@ -124,7 +124,7 @@ public class TodoListServiceTest {
         when(todoListServiceMock.getTaskById(55)).thenReturn(taskMock);
 
         when(todoListServiceMock.getTaskById(55).getLastReadTime()).thenReturn(time);
-        Assert.assertEquals(todoListService.getTaskById(55).getLastReadTime(), LocalDateTime.now());
+        Assert.assertEquals(todoListServiceMock.getTaskById(55).getLastReadTime(), time);
     }
 
     @Test
