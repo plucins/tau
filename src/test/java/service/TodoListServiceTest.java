@@ -26,6 +26,10 @@ public class TodoListServiceTest {
 
     @Mock
     private TodoTaskTimeDTO todoTaskTimeDTOMock;
+    @Mock
+    private TodoListService todoListServiceMock;
+    @Mock
+    private TodoTask taskMock;
 
     @BeforeClass
     public static void setup() {
@@ -105,13 +109,21 @@ public class TodoListServiceTest {
 
     @Test
     public void readDataOnGetObject_correct_case() {
-        Assert.assertEquals(todoListService.getTaskById(1).getLastReadTime(), LocalDateTime.now());
+        LocalDateTime time = LocalDateTime.now();
+        when(todoListServiceMock.getTaskById(1)).thenReturn(taskMock);
+        when(todoListServiceMock.getTaskById(1).getLastReadTime()).thenReturn(time);
+
+        Assert.assertEquals(todoListServiceMock.getTaskById(1).getLastReadTime(), time);
     }
 
     @Test
     public void addedDateDuringAddToCollection_correct_case() {
         todoListService.addTaskToList(TodoListFactory.create(55, "make a call"));
+        LocalDateTime time = LocalDateTime.now();
 
+        when(todoListServiceMock.getTaskById(55)).thenReturn(taskMock);
+
+        when(todoListServiceMock.getTaskById(55).getLastReadTime()).thenReturn(time);
         Assert.assertEquals(todoListService.getTaskById(55).getLastReadTime(), LocalDateTime.now());
     }
 
