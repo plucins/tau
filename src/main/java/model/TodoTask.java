@@ -88,4 +88,18 @@ public class TodoTask {
     public void setSaveTimes(boolean saveTimes) {
         this.saveTimes = saveTimes;
     }
+
+    @Override
+    public String toString() {
+        return "TodoTask{" +
+                "id=" + id +
+                ", taskName='" + taskName + '\'' +
+                ", isDone=" + isDone +
+                ", creationTime=" + creationTime +
+                ", updatedTime=" + updatedTime +
+                ", lastReadTime=" + lastReadTime +
+                ", taskOwner=" + taskOwner +
+                ", saveTimes=" + saveTimes +
+                '}';
+    }
 }

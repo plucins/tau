@@ -155,8 +155,6 @@ public class TodoListServiceTest {
     }
 
 
-    //http://szuflandia.pjwstk.edu.pl/~pantadeusz/zajecia/tau/2019_2020_zaoczne/#art/lab2.md
-
     @After
     public void clear() {
         repository.setTodoLists(new ArrayList<>());

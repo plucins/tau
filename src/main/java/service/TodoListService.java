@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class TodoListService {
 
@@ -77,5 +78,29 @@ public class TodoListService {
 
     public TodoTaskTimeDTO getTimesById(long id) {
         return new TodoTaskTimeDTO().create(getTaskById(id));
+    }
+
+    public List<TodoTask> getTasksByRegex(String regex) {
+        if(regex == null){
+            throw new IllegalArgumentException("regex can not by null");
+        }
+
+       return TodoListRepo.getInstance().collectionAccess().stream()
+                .filter(u -> u.getTaskName().contains(regex))
+                .collect(Collectors.toList());
+    }
+
+    public boolean deleteTasksByRegex(String regex) {
+        if(regex == null){
+            throw new IllegalArgumentException("regex can not by null");
+        }
+
+        List<TodoTask> tasksToRemove = getTasksByRegex(regex);
+        if(tasksToRemove.size() == 0) {
+            return false;
+        }
+
+        tasksToRemove.forEach(u -> deleteTaskById(u.getId()));
+        return true;
     }
 }
