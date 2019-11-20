@@ -1,18 +1,18 @@
 package bdd.jbehave;
 
-import model.TaskOwner;
-import model.TodoTask;
+import pl.pjwstk.model.TaskOwner;
+import pl.pjwstk.model.TodoTask;
 import org.hamcrest.MatcherAssert;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
-import repository.TodoListRepo;
-import service.TodoListService;
+import org.junit.Assert;
+import pl.pjwstk.repository.TodoListRepo;
+import pl.pjwstk.service.TodoListService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 public class TaskCreationSteps {
@@ -73,7 +73,7 @@ public class TaskCreationSteps {
     @Then("user get all tasks with $regex ")
     public void tasksByRegexCorrect(String regex) {
         MatcherAssert.assertThat(todoTasks.size(), equalTo(1));
-        MatcherAssert.assertThat(todoTasks.get(1).getTaskName(), containsString(regex) );
+        Assert.assertTrue(todoTasks.get(1).getTaskName().contains(regex));
     }
 
     @Given("inits tasks list")
